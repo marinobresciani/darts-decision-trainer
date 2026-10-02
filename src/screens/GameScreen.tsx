@@ -52,6 +52,9 @@ export function GameScreen({ profile, seed, showRunningScore, onFinish, onQuit }
 
   const feedback = lastTurn && (
     <View style={[styles.panel, { borderLeftWidth: 4, borderLeftColor: gradeColor[lastTurn.evaluation.grade] }]}>
+      <Text style={styles.small}>
+        Last dart · on {lastTurn.before}, {lastTurn.dartsBefore} in hand
+      </Text>
       <Text style={[styles.grade, { color: gradeColor[lastTurn.evaluation.grade] }]}>
         {targetLabel(lastTurn.evaluation.target)}: {gradeLabel[lastTurn.evaluation.grade]}
       </Text>

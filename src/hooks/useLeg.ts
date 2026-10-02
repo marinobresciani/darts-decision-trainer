@@ -19,6 +19,9 @@ import type { DecisionLogEntry } from '../state/stats';
 export type Turn = {
   evaluation: DecisionEvaluation;
   dart: SimulatedDart;
+  /** Score and darts in hand when the choice was made: the position the grade refers to. */
+  before: number;
+  dartsBefore: number;
   /** Remaining score after this dart (or the restored score on a bust). */
   after: number;
   bust: boolean;
@@ -74,6 +77,8 @@ export function useLeg(profile: PlayerProfile, seed: number) {
       setLastTurn({
         evaluation,
         dart,
+        before: state.playerScore,
+        dartsBefore: state.dartsRemainingInVisit,
         after: next.playerScore,
         bust: !!rec?.bust,
         checkout: !!rec?.checkout,
